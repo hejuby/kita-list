@@ -12,7 +12,9 @@ export default class Router extends Component {
     this.el.innerHTML = '';
     this.el.append(routedPage ? new routedPage.component().el : new NotFound().el);
   }
+
   render() {
+    this.el.classList.add('router');
     this.routeRender();
 
     window.addEventListener('popstate', () => { this.routeRender(); });
