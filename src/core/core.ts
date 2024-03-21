@@ -1,12 +1,14 @@
-interface ComponentPayload {
-  tagName?: string,
-  state?: {
+interface Payload {
+  tagName: string,
+  state: {
     [key: string]: unknown
   },
-  props?: {
+  props: {
     [key: string]: unknown
   }
 }
+
+type ComponentPayload = Partial<Payload>;
 
 export class Component {
   public el;
