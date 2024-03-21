@@ -1,7 +1,13 @@
 import { Component } from "./core/core";
+import Header from "./components/Header";
+import Router from "./components/Router";
+import Footer from "./components/Footer";
 
-const newComponent = Component.createElement('h1', null, 'Hello');
-const newElement = document.createElement(newComponent.type);
-newElement.innerHTML = `${newComponent.children.join()}`;
-
-export default Component.createElement('h1', null, 'Hello');
+export default class App extends Component {
+  render() {
+    this.el.append(
+      new Header().el,
+      new Router().el,
+      new Footer().el);
+  }
+}
