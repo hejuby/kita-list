@@ -1,7 +1,9 @@
-import Home from '../components/Home';
-import Search from '../components/Search';
+import Home from '../pages/Home';
+import Profile from '../pages/Profile';
+import Create from '../pages/Create';
 
 export const routes = [
   { href: '#/', component: Home },
-  { href: '#/search', component: Search },
+  { href: '#/profile', component: Profile },
+  { href: '#/create', component: Create }
 ];
