@@ -1,15 +1,11 @@
-interface Indexable {
+export interface Indexable {
   [key: string]: unknown
 }
 
 interface Payload<P, S> {
   tagName?: string,
-  props?: {
-    [key: string]: P
-  },
-  state?: {
-    [key: string]: S
-  }
+  props?: P,
+  state?: S
 }
 
 // type ComponentPayload = Partial<Payload>;
@@ -22,8 +18,8 @@ export class Component<P = unknown, S = unknown> {
   constructor(payload: Payload<P, S> = {}) {
     const {
       tagName = 'div',
-      props = {},
-      state = {}
+      props = {} as P,
+      state = {} as S
     } = payload;
     this.el = document.createElement(tagName);
     this.props = props;

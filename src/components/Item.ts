@@ -1,14 +1,18 @@
 import { Component } from "../core/core";
-import { ProfileItem, ProfileElements } from "../store/profile";
+import { ProfileItem } from "../store/profile";
 
-export default class Item extends Component<ProfileElements> {
+export default class Item extends Component<ProfileItem> {
   constructor(props: ProfileItem) {
     super({
-      props: { ...props }
+      props: props
     });
   }
 
   render() {
-    if (this.props) this.el.innerHTML = `${this.props.name} ${this.props.email} ${this.props.phoneNumber} ${this.props.description}`;
+    this.el.innerHTML = `
+      <a>
+        ${this.props.name} ${this.props.email} ${this.props.phoneNumber} ${this.props.description}
+      </a>
+    `;
   }
 }

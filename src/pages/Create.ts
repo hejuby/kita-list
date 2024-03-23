@@ -1,7 +1,17 @@
 import { Component } from "../core/core";
-import { ProfileElements, profileStore, updateStorage } from "../store/profile";
+import { profileItemProperties, ProfileItem, ProfileKeys, profileStore, updateStorage } from "../store/profile";
 
-export default class Create extends Component<unknown, ProfileElements | string> {
+interface CreateState extends ProfileItem {
+  message: string
+} 
+
+const isProfileKey = (key: string): key is ProfileKeys => {
+  return profileItemProperties.reduce((acc, cur) => {
+    return acc || (cur === key);
+  }, false);
+}
+
+export default class Create extends Component<unknown, CreateState> {
   constructor() {
     super({
       state: {
@@ -37,7 +47,7 @@ export default class Create extends Component<unknown, ProfileElements | string>
     const inputList = this.el.querySelectorAll('input');
     inputList.forEach(input => {
       input.addEventListener('input', () => {
-        this.state[input.id] = input.value;
+        if (isProfileKey(input.id)) this.state[input.id] = input.value;
       });
     });
 
@@ -45,13 +55,13 @@ export default class Create extends Component<unknown, ProfileElements | string>
     button && button.addEventListener('click', ev => {
       ev.preventDefault();
       if (this.validateInput()) {
-        profileStore.state.profiles.push({ name: this.state.name, email: this.state.email, phoneNumber: this.state.phoneNumber, description: this.state.description });
+        profileStore.state.profiles.push(this.state);
         updateStorage(profileStore.state.profiles);
         this.state.message = 'Successfully created!';
         this.render();
         inputList.forEach(input => {
           input.value = '';
-          this.state[input.id] = '';
+          if (isProfileKey(input.id)) this.state[input.id] = '';
         });
       } else {
         this.state.message = 'Please type in proper input format.';

@@ -2,12 +2,11 @@ import { Store } from "../core/core";
 
 // export type PhoneNumber = `${number}-${number}-${number}` | string;
 
-export interface ProfileItem {
-  name: string,
-  email: string,
-  phoneNumber: string,
-  description: string
-}
+export const profileItemProperties = ["name", "email", "phoneNumber", "description"] as const; 
+
+export type ProfileItemKeys = typeof profileItemProperties[number];
+
+export type ProfileItem = Record<ProfileItemKeys, string>; 
 
 export type ProfileKeys = keyof ProfileItem;
 
@@ -49,3 +48,10 @@ export const profileStore = new Store<Profile>({
 export function updateStorage(newProfiles: ProfileItem[]) {
   localStorage.setItem("profiles", JSON.stringify(newProfiles));
 }
+
+export const currentProfile = new Store<ProfileItem>({
+  name: '',
+  email: '',
+  phoneNumber: '',
+  description: ''
+});

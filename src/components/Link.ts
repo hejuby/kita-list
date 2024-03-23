@@ -1,18 +1,23 @@
 import { Component } from "../core/core";
+import { RouteProps } from "../routes";
 
-export default class Link extends Component {
-  constructor({ href, component }) {
+const isElofAnchor = (el: HTMLElement): el is HTMLAnchorElement => el.tagName === 'A';
+
+export default class Link extends Component<RouteProps> {
+  constructor({ href, component }: RouteProps) {
     super({
       tagName: 'a',
       props: {
-        to: href,
-        children: component
+        href: href,
+        component: component
       }
     });
+    if (isElofAnchor(this.el)) {
+      this.el.href = this.props.href;
+    }
   }
 
   render() {
-    this.el.href = this.props.to;
-    this.el.innerHTML = `${this.props.children.name}`;
+    this.el.innerHTML = `${this.props.component.name}`;
   }
 }

@@ -6,4 +6,5 @@ import Footer from './components/Footer';
 document.querySelector<HTMLDivElement>('#root')?.append(
   new Header().el,
   new App().el,
-  new Footer().el);
+  new Footer().el
+);
