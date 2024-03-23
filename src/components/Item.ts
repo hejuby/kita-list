@@ -18,6 +18,6 @@ export default class Item extends Component<ProfileItem> {
     const linkToProfile = this.el.querySelector('a');
     linkToProfile && linkToProfile.addEventListener('click', () => {
       currentProfile.state = this.props;
-    }) 
+    });
   }
 }

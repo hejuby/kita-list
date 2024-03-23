@@ -26,22 +26,22 @@ export interface Profile {
 
 const defaultProfiles = [
   {
-    name: 'Heejun',
+    name: 'Heejun Byeon',
     email: 'hejuby@gmail.com',
-    phoneNumber: '010-9974-7515',
+    phoneNumber: '010-1111-2222',
     description: 'Frontend Developer'
   },
   {
-    name: 'Heejun',
-    email: 'hejuby@gmail.com',
-    phoneNumber: '010-9974-7515',
-    description: 'Frontend Developer'
+    name: 'Mark Zuckerberg',
+    email: 'zuck@fb.com',
+    phoneNumber: '010-3333-4444',
+    description: 'Facebook CEO'
   },
   {
-    name: 'Heejun',
-    email: 'hejuby@gmail.com',
-    phoneNumber: '010-9974-7515',
-    description: 'Frontend Developer'
+    name: 'Porter Robinson',
+    email: 'porterrobinson.com',
+    phoneNumber: '010-5555-6666',
+    description: 'Music Producer'
   }
 ];
 

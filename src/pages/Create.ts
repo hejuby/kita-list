@@ -49,7 +49,7 @@ export default class Create extends Component<unknown, CreateState> {
     button && button.addEventListener('click', ev => {
       ev.preventDefault();
       if (this.validateInput()) {
-        profileStore.state.profiles.push(this.state);
+        profileStore.state.profiles.push(JSON.parse(JSON.stringify(this.state)));
         updateStorage(profileStore.state.profiles);
         this.state.message = 'Successfully created!';
         this.render();
