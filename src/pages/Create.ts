@@ -1,14 +1,8 @@
 import { Component } from "../core/core";
-import { profileItemProperties, ProfileItem, ProfileKeys, profileStore, updateStorage } from "../store/profile";
+import { ProfileItem, isProfileKey, profileStore, updateStorage } from "../store/profile";
 
 interface CreateState extends ProfileItem {
   message: string
-} 
-
-const isProfileKey = (key: string): key is ProfileKeys => {
-  return profileItemProperties.reduce((acc, cur) => {
-    return acc || (cur === key);
-  }, false);
 }
 
 export default class Create extends Component<unknown, CreateState> {

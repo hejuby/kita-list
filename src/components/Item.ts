@@ -1,5 +1,5 @@
 import { Component } from "../core/core";
-import { ProfileItem } from "../store/profile";
+import { ProfileItem, currentProfile } from "../store/profile";
 
 export default class Item extends Component<ProfileItem> {
   constructor(props: ProfileItem) {
@@ -10,9 +10,14 @@ export default class Item extends Component<ProfileItem> {
 
   render() {
     this.el.innerHTML = `
-      <a>
+      <a href="#/profile">
         ${this.props.name} ${this.props.email} ${this.props.phoneNumber} ${this.props.description}
       </a>
     `;
+
+    const linkToProfile = this.el.querySelector('a');
+    linkToProfile && linkToProfile.addEventListener('click', () => {
+      currentProfile.state = this.props;
+    }) 
   }
 }

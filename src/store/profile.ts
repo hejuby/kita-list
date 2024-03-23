@@ -14,6 +14,12 @@ export type ProfileElements = string;
 
 // type Profile = ProfileItem[] | null;
 
+export const isProfileKey = (key: string): key is ProfileKeys => {
+  return profileItemProperties.reduce((acc, cur) => {
+    return acc || (cur === key);
+  }, false);
+}
+
 export interface Profile {
   profiles: ProfileItem[]
 }
