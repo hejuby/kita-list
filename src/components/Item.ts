@@ -32,7 +32,7 @@ export default class Item extends Component<ItemType> {
 
     this.el.innerHTML = `
       <a href="#/profile">
-        <img src="${this.props.imageURL.length ? this.props.imageURL : '/public/profile_1280.png'}" style="width: 120px; height: 120px" alt="${this.props.name}" />
+        <img src="${this.props.imageURL.length ? this.props.imageURL : '/profile_1280.png'}" style="width: 120px; height: 120px" alt="${this.props.name}" />
         ${this.props.name} ${this.props.email} ${this.props.phoneNumber} ${this.props.description}
       </a>
     `;

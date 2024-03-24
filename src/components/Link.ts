@@ -4,11 +4,12 @@ import { RouteProps } from "../routes";
 const isElofAnchor = (el: HTMLElement): el is HTMLAnchorElement => el.tagName === 'A';
 
 export default class Link extends Component<RouteProps> {
-  constructor({ href, component }: RouteProps) {
+  constructor({ href, name, component }: RouteProps) {
     super({
       tagName: 'a',
       props: {
         href: href,
+        name: name,
         component: component
       }
     });
@@ -18,6 +19,6 @@ export default class Link extends Component<RouteProps> {
   }
 
   render() {
-    this.el.innerHTML = `${this.props.component.name}`;
+    this.el.innerHTML = `${this.props.name}`;
   }
 }

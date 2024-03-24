@@ -32,7 +32,7 @@ export default class Profile extends Component<unknown, ProfileURL> {
 
     this.el.innerHTML = Object.keys(currentProfile.state).map(key => {
       if (isProfileKey(key)) {
-        if (key === 'image') return `<img src="${this.state.imageURL.length ? this.state.imageURL : '/public/profile_1280.png'}" style="width: 120px; height: 120px" alt="${currentProfile.state.name}" />`
+        if (key === 'image') return `<img src="${this.state.imageURL.length ? this.state.imageURL : '/profile_1280.png'}" style="width: 120px; height: 120px" alt="${currentProfile.state.name}" />`
         return `<div>${currentProfile.state[key]}</div>`;
       }
     }).join('');
