@@ -4,16 +4,11 @@ import { selectedStore } from "../store/list";
 import Filter from "./Filter";
 import Item from './Item';
 
-export interface SelectedIndex {
-  selected: number[]
-}
-
-export default class ItemList extends Component<unknown, SelectedIndex> {
+export default class ItemList extends Component {
   constructor() {
     super({
       tagName: 'ul',
       state: {
-        selected: []
       }
     });
     profileStore.subscribe('profiles', () => {
@@ -29,7 +24,6 @@ export default class ItemList extends Component<unknown, SelectedIndex> {
       itemCheckbox.type = "checkbox";
       listItem.append(itemCheckbox, new Item(profile).el);
       this.el.append(listItem);
-      // if (!selectedStore.state.selected) = 
 
       itemCheckbox.addEventListener('click', () => {
         const indexOfCheckbox = selectedStore.state.selected.indexOf(index);
