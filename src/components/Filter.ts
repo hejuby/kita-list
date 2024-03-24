@@ -1,3 +1,4 @@
+import { getStorage, ref, deleteObject } from "firebase/storage";
 import { Component } from "../core/core";
 import { profileStore, updateStorage } from "../store/profile";
 import { selectedStore } from "../store/list";
@@ -36,8 +37,18 @@ export default class Filter extends Component<FilterInputs> {
     });
 
     const deleteButton = this.el.querySelector('#delete');
-    deleteButton && deleteButton.addEventListener('click', () => {
-      profileStore.state.profiles = profileStore.state.profiles.filter((_profile, index) => selectedStore.state.selected.indexOf(index) === -1);
+    deleteButton && deleteButton.addEventListener('click', async () => {
+      profileStore.state.profiles = await Promise.all(profileStore.state.profiles.filter( (profile, index) => {
+        if (selectedStore.state.selected.indexOf(index) !== -1) {
+          const storage = getStorage();
+          const desertRef = ref(storage, `images/${profile.image}`);
+          deleteObject(desertRef).then().catch((e) => {
+            console.log(e);
+          });
+          return false;
+        }
+        return true;
+      }));
       updateStorage(profileStore.state.profiles);
       selectedStore.state.selected = [];
     });

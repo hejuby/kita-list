@@ -83,6 +83,7 @@ export default class Create extends Component<unknown, CreateState> {
           if(isInputElement(input)) input.value = '';
           if(isProfileKey(input.id)) this.state[input.id] = '';
         });
+        this.state.imageFile = null;
       } else {
         this.state.message = 'Please type in proper input format.';
         this.render();
