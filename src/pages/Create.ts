@@ -5,7 +5,7 @@ import { storage } from "../firebase/firebase";
 
 interface CreateState extends ProfileItem {
   message: string,
-  image: File | null
+  imageFile: File | null
 }
 
 const isInputElement = (el: Element): el is HTMLInputElement => el.tagName === "INPUT";
@@ -14,13 +14,13 @@ export default class Create extends Component<unknown, CreateState> {
   constructor() {
     super({
       state: {
+        image: '',
         name: '',
         email: '',
         phoneNumber: '',
         description: '',
-        imageURL: '',
         message: '',
-        image: null
+        imageFile: null
       }
     });
   };
@@ -50,8 +50,8 @@ export default class Create extends Component<unknown, CreateState> {
     const imageInput = this.el.querySelector('input#image');
     const imagePreview = this.el.querySelector('img');
     imageInput && isInputElement(imageInput) && imageInput.addEventListener('input', () => {
-      this.state.image = imageInput.files && imageInput.files[0];
-      if (imagePreview && this.state.image) imagePreview.src = URL.createObjectURL(this.state.image);
+      this.state.imageFile = imageInput.files && imageInput.files[0];
+      if (imagePreview && this.state.imageFile) imagePreview.src = URL.createObjectURL(this.state.imageFile);
     });
 
     const inputList = this.el.querySelectorAll('input.textfield');
@@ -66,11 +66,15 @@ export default class Create extends Component<unknown, CreateState> {
       ev.preventDefault();
       if (this.validateInput()) {
         const newId = new Date().valueOf().toString();
-        if (this.state.image) {
-          const locationRef = ref(storage, `images/${newId}`);
-          await uploadBytes(locationRef, this.state.image);
+        if (this.state.imageFile) {
+          try {
+            const locationRef = ref(storage, `images/${newId}`);
+            await uploadBytes(locationRef, this.state.imageFile);
+          } catch(e) {
+            console.log(e);
+          }
         }
-        this.state.imageURL = newId;
+        this.state.image = newId;
         profileStore.state.profiles.push(JSON.parse(JSON.stringify(this.state)));
         updateStorage(profileStore.state.profiles);
         this.state.message = 'Successfully created!';

@@ -2,7 +2,7 @@ import { Store } from "../core/core";
 
 // export type PhoneNumber = `${number}-${number}-${number}` | string;
 
-export const profileItemProperties = ["name", "email", "phoneNumber", "description", "imageURL"] as const; 
+export const profileItemProperties = ["image", "name", "email", "phoneNumber", "description"] as const; 
 
 export type ProfileItemKeys = typeof profileItemProperties[number];
 
@@ -26,25 +26,25 @@ export interface Profile {
 
 const defaultProfiles = [
   {
+    image: '',
     name: 'Heejun Byeon',
     email: 'hejuby@gmail.com',
     phoneNumber: '010-1111-2222',
-    description: 'Frontend Developer',
-    imageURL: ''
+    description: 'Frontend Developer'
   },
   {
+    image: '',
     name: 'Mark Zuckerberg',
     email: 'zuck@fb.com',
     phoneNumber: '010-3333-4444',
-    description: 'Facebook CEO',
-    imageURL: ''
+    description: 'Facebook CEO'
   },
   {
+    image: '',
     name: 'Porter Robinson',
     email: 'porterrobinson.com',
     phoneNumber: '010-5555-6666',
-    description: 'Music Producer',
-    imageURL: ''
+    description: 'Music Producer'
   }
 ];
 
@@ -59,9 +59,9 @@ export function updateStorage(newProfiles: ProfileItem[]) {
 }
 
 export const currentProfile = new Store<ProfileItem>({
+  image: '',
   name: '',
   email: '',
   phoneNumber: '',
-  description: '',
-  imageURL: ''
+  description: ''
 });
