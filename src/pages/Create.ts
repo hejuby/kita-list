@@ -33,7 +33,7 @@ export default class Create extends Component<unknown, CreateState> {
     this.el.innerHTML = `
       <form>
         <input type="file" id="image" accept="image/*" />
-        <img src="/public/profile_1280.png" style="width: 120px; height: 120px" alt="profile" />
+        <img src="/profile_1280.png" style="width: 120px; height: 120px" alt="profile" />
         <label>Name</label>
         <input type="text" id="name" class="textfield" name="name" /> 
         <label>E-mail</label>
