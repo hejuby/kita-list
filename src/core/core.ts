@@ -28,6 +28,15 @@ export class Component<P = unknown, S = unknown> {
   }
 
   render() {}
+
+  static fragment(...elements: Element[]) {
+    const fragment = new DocumentFragment();
+    for (const element of elements) {
+      fragment.append(element);
+    }
+
+    return fragment;
+  }
 }
 
 interface StoreObservers {
