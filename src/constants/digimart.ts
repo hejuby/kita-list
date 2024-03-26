@@ -4,6 +4,7 @@ export const CATEGORY = {
   INSTRUMENT: 'category12Id',
   TYPE: 'category3Id',
   BRAND: 'brandnames',
+  KEYWORD: 'keywordAnd',
   COLOR: 'colors'
 }
 
