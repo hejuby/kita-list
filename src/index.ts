@@ -1,7 +1,7 @@
-import './style.css'
-import Header from './components/Header';
+import Header from './components/Header/Header';
 import App from './App';
-import Footer from './components/Footer';
+import Footer from './components/Footer/Footer';
+import './style/style.scss';
 
 document.querySelector<HTMLDivElement>('#root')?.append(
   new Header().el,

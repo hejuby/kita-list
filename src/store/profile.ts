@@ -1,57 +1,32 @@
 import { Store } from "../core/core";
+import { TYPE, COLOR } from '../constants/digimart';
 
-// export type PhoneNumber = `${number}-${number}-${number}` | string;
+const typeIdList = Object.values(TYPE).map(type => type.ID);
+const colorIdList = Object.values(COLOR).map(color => color.ID);
 
-export const profileItemProperties = ["image", "name", "email", "phoneNumber", "description"] as const; 
+type TypeId = typeof typeIdList[number];
+type ColorId = typeof colorIdList[number];
 
-export type ProfileItemKeys = typeof profileItemProperties[number];
-
-export type ProfileItem = Record<ProfileItemKeys, string>; 
+export interface ProfileItem {
+  name: string,
+  type: TypeId,
+  color: ColorId,
+  brand: string,
+  price: number,
+  image: string[],
+  memo: string
+}
 
 export type ProfileKeys = keyof ProfileItem;
-
-export type ProfileElements = string;
-
-// type Profile = ProfileItem[] | null;
-
-export const isProfileKey = (key: string): key is ProfileKeys => {
-  return profileItemProperties.reduce((acc, cur) => {
-    return acc || (cur === key);
-  }, false);
-}
 
 export interface Profile {
   profiles: ProfileItem[]
 }
 
-const defaultProfiles = [
-  {
-    image: '',
-    name: 'Heejun Byeon',
-    email: 'hejuby@gmail.com',
-    phoneNumber: '010-1111-2222',
-    description: 'Frontend Developer'
-  },
-  {
-    image: '',
-    name: 'Mark Zuckerberg',
-    email: 'zuck@fb.com',
-    phoneNumber: '010-3333-4444',
-    description: 'Facebook CEO'
-  },
-  {
-    image: '',
-    name: 'Porter Robinson',
-    email: 'porterrobinson.com',
-    phoneNumber: '010-5555-6666',
-    description: 'Music Producer'
-  }
-];
-
 const storage = localStorage.getItem("profiles");
 export const profileStore = new Store<Profile>({
   profiles:
-    (storage ? JSON.parse(storage) : defaultProfiles)
+    (storage ? JSON.parse(storage) : [])
 });
 
 export function updateStorage(newProfiles: ProfileItem[]) {
@@ -59,9 +34,11 @@ export function updateStorage(newProfiles: ProfileItem[]) {
 }
 
 export const currentProfile = new Store<ProfileItem>({
-  image: '',
   name: '',
-  email: '',
-  phoneNumber: '',
-  description: ''
+  type: 0,
+  color: 0,
+  brand: '',
+  price: 0,
+  image: [],
+  memo: ''
 });

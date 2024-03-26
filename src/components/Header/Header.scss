@@ -1,0 +1,11 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 36px;
+  position: sticky;
+  logo {
+    width: 64px;
+    height: 64px;
+  }
+}

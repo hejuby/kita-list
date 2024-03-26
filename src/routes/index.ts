@@ -1,8 +1,7 @@
 import Home from '../pages/Home';
-import Profile from '../pages/Profile';
-import Create from '../pages/Create';
+import Search from '../pages/Search';
 
-export type RouteComponent = typeof Home | typeof Profile | typeof Create;
+export type RouteComponent = typeof Home | typeof Search;
 
 export interface RouteProps {
   href: string,
@@ -14,6 +13,5 @@ export type RouteElements = string | RouteComponent;
 
 export const routes: RouteProps[] = [
   { href: '#/', name: 'Home', component: Home },
-  { href: '#/profile', name: 'Profile', component: Profile },
-  { href: '#/create', name: 'Create', component: Create }
+  { href: '#/search', name: 'Search', component: Search }
 ];

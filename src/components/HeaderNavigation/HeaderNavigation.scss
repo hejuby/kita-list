@@ -1,0 +1,12 @@
+.menu {
+  &__list {
+    display: flex;
+    gap: 18px;
+  }
+  &__item {
+    font-size: 1.3rem;
+    .active {
+      color: #ff4651;
+    }
+  }
+}

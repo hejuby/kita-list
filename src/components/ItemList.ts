@@ -1,13 +1,13 @@
 import { Component } from "../core/core";
 import { profileStore } from '../store/profile';
 import { selectedStore } from "../store/list";
+import InitialMessage from "./InitialMessage/InitialMessage";
 import Filter from "./Filter";
 import Item from './Item';
 
 export default class ItemList extends Component {
   constructor() {
     super({
-      tagName: 'ul',
       state: {
       }
     });
@@ -17,6 +17,10 @@ export default class ItemList extends Component {
   }
 
   render() {
+    if (!profileStore.state.profiles.length) {
+      this.el.append(new InitialMessage().el);
+      return;
+    }
     this.el.innerHTML = '';
     profileStore.state.profiles.forEach((profile, index) => {
       const listItem = document.createElement('li');
