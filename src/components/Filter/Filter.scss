@@ -1,0 +1,23 @@
+.button-wrapper {
+  display: flex;
+  gap: 12px;
+  button {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff4651;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    &:hover {
+      svg {
+        fill: #181818;
+      }
+    }
+    svg {
+      fill: #f0f0f0;
+    }
+  }
+}

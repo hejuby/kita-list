@@ -1,15 +1,15 @@
-import { Component } from "../core/core";
-import { profileStore } from '../store/profile';
-import { selectedStore } from "../store/list";
-import InitialMessage from "./InitialMessage/InitialMessage";
-import Filter from "./Filter";
-import Item from './Item';
+import { Component } from "../../core/core";
+import { profileStore } from '../../store/profile';
+import { selectedStore } from "../../store/list";
+import InitialMessage from "../InitialMessage/InitialMessage";
+import Filter from "../Filter/Filter";
+import Item from '../Item/Item';
+import './ItemList.scss';
 
 export default class ItemList extends Component {
   constructor() {
     super({
-      state: {
-      }
+      state: {}
     });
     profileStore.subscribe('profiles', () => {
       this.render();
@@ -17,8 +17,12 @@ export default class ItemList extends Component {
   }
 
   render() {
+    this.el.classList.add('content');
     if (!profileStore.state.profiles.length) {
-      this.el.append(new InitialMessage().el);
+      const controllerWrapper = document.createElement('section');
+      controllerWrapper.classList.add('controller');
+      controllerWrapper.append(new InitialMessage().el, new Filter({ inputs: [] }).el);
+      this.el.append(controllerWrapper);
       return;
     }
     this.el.innerHTML = '';

@@ -1,6 +1,6 @@
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { Component } from "../core/core";
-import { ProfileItem, currentProfile } from "../store/profile";
+import { Component } from "../../core/core";
+import { ProfileItem, currentProfile } from "../../store/profile";
 
 interface ItemType extends ProfileItem {
   imageURL: string

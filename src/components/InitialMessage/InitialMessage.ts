@@ -5,12 +5,6 @@ import Link from "../Link/Link";
 import './InitialMessage.scss';
 
 export default class InitialMessage extends Component {
-  constructor() {
-    super({
-      tagName: 'section'
-    });
-  }
-
   render() {
     this.el.classList.add('initial-message');
 

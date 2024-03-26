@@ -1,6 +1,6 @@
-import { Component } from "../core/core";
-import { routes } from '../routes';
-import NotFound from "../pages/NotFound";
+import { Component } from "../../core/core";
+import { routes } from '../../routes';
+import NotFound from "../../pages/NotFound";
 
 export default class Router extends Component {
   private routeRender() {

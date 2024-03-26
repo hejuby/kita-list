@@ -1,6 +1,5 @@
 import { Component } from "../../core/core";
 import { routes } from '../../routes';
-// import {}
 import Link from '../Link/Link';
 import './HeaderNavigation.scss';
 

@@ -1,7 +1,8 @@
 import { getStorage, ref, deleteObject } from "firebase/storage";
-import { Component } from "../core/core";
-import { profileStore, updateStorage } from "../store/profile";
-import { selectedStore } from "../store/list";
+import { Component } from "../../core/core";
+import { profileStore, updateStorage } from "../../store/profile";
+import { selectedStore } from "../../store/list";
+import './Filter.scss';
 
 interface FilterInputs {
   inputs: HTMLInputElement[]
@@ -21,15 +22,21 @@ export default class Filter extends Component<FilterInputs> {
     });
   } 
 
-  render() {
-    this.el.innerHTML = `
-      <button type="button" id="select-all">
-        Select All
-      </button>
-      <button type="button" id="delete">
-        Delete
-      </button> 
-    `;
+  async render() {
+    const addImageSvg = await (await fetch('/add.svg')).text();
+    const deleteImageSvg = await (await fetch('/delete.svg')).text();
+
+    this.el.classList.add('button-wrapper');
+
+    const addBtn = document.createElement('button');
+    addBtn.id = 'select-all';
+    addBtn.innerHTML = addImageSvg;
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.id = 'delete';
+    deleteBtn.innerHTML = deleteImageSvg;
+    
+    this.el.append(addBtn, deleteBtn);
 
     const selectAllButton = this.el.querySelector('#select-all');
     selectAllButton && selectAllButton.addEventListener('click', () => {

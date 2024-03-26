@@ -1,5 +1,5 @@
 import { Component } from "./core/core";
-import Router from "./components/Router";
+import Router from "./components/Router/Router";
 
 export default class App extends Component {
   constructor() {
