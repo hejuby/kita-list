@@ -1,4 +1,7 @@
-export const TITLE = '키타-리스트';
+export const TITLE = {
+  FRONT: '키타-',
+  BACK: '리스트'
+};
 
 export const INITIAL_MESSAGE = {
   LINE: {

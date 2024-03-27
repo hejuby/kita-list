@@ -29,7 +29,7 @@ export default class Filter extends Component<FilterInputs> {
     this.el.classList.add('button-wrapper');
 
     const addBtn = document.createElement('button');
-    addBtn.id = 'select-all';
+    addBtn.id = 'create';
     addBtn.innerHTML = addImageSvg;
 
     const deleteBtn = document.createElement('button');
@@ -38,7 +38,7 @@ export default class Filter extends Component<FilterInputs> {
     
     this.el.append(addBtn, deleteBtn);
 
-    const selectAllButton = this.el.querySelector('#select-all');
+    const selectAllButton = this.el.querySelector('#create');
     selectAllButton && selectAllButton.addEventListener('click', () => {
       this.pressSelectAll(selectedStore.state.selected.length === profileStore.state.profiles.length);
     });

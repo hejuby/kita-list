@@ -1,6 +1,7 @@
 import { Component } from "../../core/core";
 import { routes } from '../../routes';
 import NotFound from "../../pages/NotFound";
+import './Router.scss';
 
 export default class Router extends Component {
   private routeRender() {
