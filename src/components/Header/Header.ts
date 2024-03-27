@@ -22,6 +22,7 @@ export default class Header extends Component {
 
     this.el.append(Component.fragment(
       new Link({ ...routes[0], inner: logo }).el,
-      new HeaderNavigation().el));
+      new HeaderNavigation().el
+    ));
   }
 }

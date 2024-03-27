@@ -3,12 +3,14 @@ import { profileStore } from '../../store/profile';
 import { selectedStore } from "../../store/list";
 import InitialMessage from "../InitialMessage/InitialMessage";
 import Filter from "../Filter/Filter";
+import Create from "../Create/Create";
 import Item from '../Item/Item';
 import './ItemList.scss';
 
 export default class ItemList extends Component {
   constructor() {
     super({
+      tagName: 'section',
       state: {}
     });
     profileStore.subscribe('profiles', () => {
@@ -18,11 +20,12 @@ export default class ItemList extends Component {
 
   render() {
     this.el.classList.add('content');
-    if (!profileStore.state.profiles.length) {
+    if (true) {
       const controllerWrapper = document.createElement('section');
       controllerWrapper.classList.add('controller');
       controllerWrapper.append(new InitialMessage().el, new Filter({ inputs: [] }).el);
-      this.el.append(controllerWrapper);
+
+      this.el.append(Component.fragment(controllerWrapper, new Create().el));
       return;
     }
     this.el.innerHTML = '';

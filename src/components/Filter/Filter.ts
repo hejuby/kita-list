@@ -2,6 +2,7 @@ import { getStorage, ref, deleteObject } from "firebase/storage";
 import { Component } from "../../core/core";
 import { profileStore, updateStorage } from "../../store/profile";
 import { selectedStore } from "../../store/list";
+import { controlState } from "../../store/control";
 import './Filter.scss';
 
 interface FilterInputs {
@@ -11,6 +12,7 @@ interface FilterInputs {
 export default class Filter extends Component<FilterInputs> {
   constructor(props: FilterInputs) {
     super({
+      tagName: 'nav',
       props: props
     })
   }
@@ -36,11 +38,15 @@ export default class Filter extends Component<FilterInputs> {
     deleteBtn.id = 'delete';
     deleteBtn.innerHTML = deleteImageSvg;
     
-    this.el.append(addBtn, deleteBtn);
+    this.el.append(Component.fragment(
+      addBtn,
+      deleteBtn
+    ));
 
     const selectAllButton = this.el.querySelector('#create');
     selectAllButton && selectAllButton.addEventListener('click', () => {
-      this.pressSelectAll(selectedStore.state.selected.length === profileStore.state.profiles.length);
+      controlState.state.control = "create";
+      // this.pressSelectAll(selectedStore.state.selected.length === profileStore.state.profiles.length);
     });
 
     const deleteButton = this.el.querySelector('#delete');

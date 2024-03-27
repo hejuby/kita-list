@@ -24,6 +24,12 @@ export default class Link extends Component<LinkProps> {
   }
 
   render() {
+    window.addEventListener('popstate', () => {
+      if (this.el.parentElement && this.el.parentElement.tagName === 'LI') {
+        this.giveActive();
+      }
+    });
+    
     if (typeof this.props.inner === 'string') {
       this.el.innerText = this.props.inner;
       return;
@@ -33,12 +39,6 @@ export default class Link extends Component<LinkProps> {
       return;
     }
     this.el.innerText = this.props.name;
-
-    window.addEventListener('popstate', () => {
-      if (this.el.parentElement && this.el.parentElement.tagName === 'LI') {
-        this.giveActive();
-      }
-    })
   }
 
   private giveActive() {

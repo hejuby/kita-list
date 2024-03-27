@@ -13,7 +13,7 @@ export const INSTRUMENT = {
 } as const;
 
 export interface OptionValue {
-  ID: number,
+  ID: number | null,
   TEXT: string
 };
 
