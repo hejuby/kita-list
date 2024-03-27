@@ -1,29 +1,37 @@
-header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 36px 17%;
   position: sticky;
-  logo {
-    width: 64px;
-    height: 64px;
+  &__logo {
+    width: 128px;
+    height: 128px;
   }
 }
 
 @media screen and (max-width: 1799px) {
-  header {
+  .header {
     padding: 36px 72px;
   }
 }
 
 @media screen and (max-width: 1199px) {
-  header {
+  .header {
     padding: 36px;
+    &__logo {
+      width: 96px;
+      height: 96px;
+    }
   }
 }
 
 @media screen and (max-width: 599px) {
-  header {
-    padding: 18px;
+  .header {
+    padding: 16px;
+    &__logo {
+      width: 64px;
+      height: 64px;
+    }
   }   
 }
