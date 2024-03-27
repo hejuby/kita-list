@@ -1,11 +1,8 @@
 import { Store } from "../core/core";
 import { TYPE, COLOR } from '../constants/digimart';
 
-const typeIdList = Object.values(TYPE).map(type => type.ID);
-const colorIdList = Object.values(COLOR).map(color => color.ID);
-
-type TypeId = typeof typeIdList[number];
-type ColorId = typeof colorIdList[number];
+type TypeId = typeof TYPE[keyof typeof TYPE]['ID'] | null;
+type ColorId = typeof COLOR[keyof typeof COLOR]['ID'] | null;
 
 export interface ProfileItem {
   name: string,
@@ -35,8 +32,8 @@ export function updateStorage(newProfiles: ProfileItem[]) {
 
 export const currentProfile = new Store<ProfileItem>({
   name: '',
-  type: 0,
-  color: 0,
+  type: null,
+  color: null,
   brand: '',
   price: 0,
   image: [],
