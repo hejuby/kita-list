@@ -1,4 +1,4 @@
-export const URL = 'https://www.digimart.net/search?';
+export const URL = 'https://www.digimart.net/search?' as const;
 
 export const CATEGORY = {
   INSTRUMENT: 'category12Id',
@@ -6,10 +6,19 @@ export const CATEGORY = {
   BRAND: 'brandnames',
   KEYWORD: 'keywordAnd',
   COLOR: 'colors'
-}
+} as const;
 
 export const INSTRUMENT = {
   ELECTRIC_GUITAR: 101
+} as const;
+
+export interface OptionValue {
+  ID: number,
+  TEXT: string
+};
+
+export interface Option {
+  [key: string]: OptionValue
 };
 
 export const TYPE = {
@@ -77,7 +86,7 @@ export const TYPE = {
     ID: 10199,
     TEXT: '그 외'
   }
-}
+} as const;
 
 export const COLOR = {
   SUNBURST: {
@@ -132,4 +141,4 @@ export const COLOR = {
     ID: 1018,
     TEXT: '브라운'
   }
-};
+} as const;
