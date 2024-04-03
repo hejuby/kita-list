@@ -29,7 +29,7 @@ export default class Link extends Component<LinkProps> {
         this.giveActive();
       }
     });
-    
+
     if (typeof this.props.inner === 'string') {
       this.el.innerText = this.props.inner;
       return;

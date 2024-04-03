@@ -1,6 +1,6 @@
 import { Store } from "../core/core";
 
-export const controlStateArray = ["normal", "create", "delete"] as const;
+export const controlStateArray = ["normal", "create", "profile", "delete"] as const;
 
 export type ControlStateValues = typeof controlStateArray[number];
 

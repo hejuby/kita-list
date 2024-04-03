@@ -1,6 +1,6 @@
-import { Component } from "../core/core";
+import { Component } from "../../core/core";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { isProfileKey, currentProfile } from "../store/profile";
+import { isProfileKey, currentProfile } from "../../store/profile";
 
 interface ProfileURL {
   imageURL: string
