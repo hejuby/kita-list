@@ -3,7 +3,7 @@ import { Component } from "../../core/core";
 import { profileStore, updateStorage } from "../../store/profile";
 import { selectedStore } from "../../store/list";
 import { controlState } from "../../store/control";
-import './Filter.scss';
+import "./Filter.scss";
 
 interface FilterInputs {
   inputs: HTMLInputElement[]
@@ -12,7 +12,7 @@ interface FilterInputs {
 export default class Filter extends Component<FilterInputs> {
   constructor(props: FilterInputs) {
     super({
-      tagName: 'nav',
+      tagName: "nav",
       props: props
     })
   }
@@ -25,17 +25,17 @@ export default class Filter extends Component<FilterInputs> {
   } 
 
   async render() {
-    const addImageSvg = await (await fetch('/add.svg')).text();
-    const deleteImageSvg = await (await fetch('/delete.svg')).text();
+    const addImageSvg = await (await fetch("/add.svg")).text();
+    const deleteImageSvg = await (await fetch("/delete.svg")).text();
 
-    this.el.classList.add('button-wrapper');
+    this.el.classList.add("button-wrapper");
 
-    const addBtn = document.createElement('button');
-    addBtn.id = 'create';
+    const addBtn = document.createElement("button");
+    addBtn.id = "create";
     addBtn.innerHTML = addImageSvg;
 
-    const deleteBtn = document.createElement('button');
-    deleteBtn.id = 'delete';
+    const deleteBtn = document.createElement("button");
+    deleteBtn.id = "delete";
     deleteBtn.innerHTML = deleteImageSvg;
     
     this.el.append(Component.fragment(
@@ -43,14 +43,14 @@ export default class Filter extends Component<FilterInputs> {
       deleteBtn
     ));
 
-    const selectAllButton = this.el.querySelector('#create');
-    selectAllButton && selectAllButton.addEventListener('click', () => {
+    const selectAllButton = this.el.querySelector("#create");
+    selectAllButton && selectAllButton.addEventListener("click", () => {
       controlState.state.control = "create";
       // this.pressSelectAll(selectedStore.state.selected.length === profileStore.state.profiles.length);
     });
 
-    const deleteButton = this.el.querySelector('#delete');
-    deleteButton && deleteButton.addEventListener('click', async () => {
+    const deleteButton = this.el.querySelector("#delete");
+    deleteButton && deleteButton.addEventListener("click", async () => {
       profileStore.state.profiles = await Promise.all(profileStore.state.profiles.filter( (profile, index) => {
         if (selectedStore.state.selected.indexOf(index) !== -1) {
           const storage = getStorage();

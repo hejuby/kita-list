@@ -11,13 +11,13 @@ export default class Item extends Component<ItemType> {
     super({
       props: {
         ...props,
-        imageURL: ''
+        imageURL: ""
       }
     });
   }
 
   async render() {
-    this.el.innerText = 'Loading...';
+    this.el.innerText = "Loading...";
 
     if (this.props.image.length) {
       const storage = getStorage();
@@ -32,13 +32,13 @@ export default class Item extends Component<ItemType> {
 
     this.el.innerHTML = `
       <a href="#/profile">
-        <img src="${this.props.imageURL.length ? this.props.imageURL : '/profile_1280.png'}" style="width: 120px; height: 120px" alt="${this.props.name}" />
+        <img src="${this.props.imageURL.length ? this.props.imageURL : "/profile_1280.png"}" style="width: 120px; height: 120px" alt="${this.props.name}" />
         ${this.props.name} ${this.props.email} ${this.props.phoneNumber} ${this.props.description}
       </a>
     `;
 
-    const linkToProfile = this.el.querySelector('a');
-    linkToProfile && linkToProfile.addEventListener('click', () => {
+    const linkToProfile = this.el.querySelector("a");
+    linkToProfile && linkToProfile.addEventListener("click", () => {
       currentProfile.state = this.props;
     });
   }

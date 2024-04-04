@@ -1,5 +1,5 @@
-import Home from '../pages/Home';
-import Search from '../pages/Search';
+import Home from "../pages/Home";
+import Search from "../pages/Search";
 
 export type RouteComponent = typeof Home | typeof Search;
 
@@ -12,6 +12,6 @@ export interface RouteProps {
 export type RouteElements = string | RouteComponent; 
 
 export const routes: RouteProps[] = [
-  { href: '#/', name: 'Home', component: Home },
-  { href: '#/search', name: 'Search', component: Search }
+  { href: "#/", name: "Home", component: Home },
+  { href: "#/search", name: "Search", component: Search }
 ];

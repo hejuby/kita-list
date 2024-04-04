@@ -17,7 +17,7 @@ export class Component<P = unknown, S = unknown> {
 
   constructor(payload: Payload<P, S> = {}) {
     const {
-      tagName = 'div',
+      tagName = "div",
       props = {} as P,
       state = {} as S
     } = payload;

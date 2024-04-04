@@ -3,7 +3,7 @@ import { Component } from "../core/core";
 export default class NotFound extends Component {
   constructor() {
     super({
-      tagName: 'h1'
+      tagName: "h1"
     });
   }
 

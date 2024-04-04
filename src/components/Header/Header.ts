@@ -8,15 +8,15 @@ import "./Header.scss";
 export default class Header extends Component {
   constructor() {
     super({
-      tagName: 'header'
+      tagName: "header"
     });
   }
 
   render() {
-    this.el.classList.add('header');
+    this.el.classList.add("header");
 
-    const logo = document.createElement('img');
-    logo.classList.add('header__logo');
+    const logo = document.createElement("img");
+    logo.classList.add("header__logo");
     logo.src = LOGO.SRC;
     logo.alt = LOGO.ALT;
 

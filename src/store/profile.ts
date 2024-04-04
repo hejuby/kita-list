@@ -1,8 +1,8 @@
 import { Store } from "../core/core";
-import { TYPE, COLOR } from '../constants/digimart';
+import { TYPE, COLOR } from "../constants/digimart";
 
-type TypeId = typeof TYPE[keyof typeof TYPE]['ID'] | unknown;
-type ColorId = typeof COLOR[keyof typeof COLOR]['ID'] | unknown;
+type TypeId = typeof TYPE[keyof typeof TYPE]["ID"] | unknown;
+type ColorId = typeof COLOR[keyof typeof COLOR]["ID"] | unknown;
 
 export interface ProfileItem {
   name: string,
@@ -15,13 +15,13 @@ export interface ProfileItem {
 }
 
 export const defaultProfile: ProfileItem = {
-  name: '',
+  name: "",
   type: null,
   color: null,
-  brand: '',
+  brand: "",
   price: 0,
   image: [],
-  memo: ''
+  memo: ""
 };
 
 export type ProfileKeys = keyof ProfileItem;

@@ -1,6 +1,6 @@
 import { Component } from "../../core/core";
 import { RouteProps } from "../../routes";
-import './Link.scss';
+import "./Link.scss";
 
 interface LinkProps extends RouteProps {
   inner?: string | HTMLElement
@@ -9,7 +9,7 @@ interface LinkProps extends RouteProps {
 export default class Link extends Component<LinkProps> {
   constructor({ href, name, component, inner }: LinkProps) {
     super({
-      tagName: 'a',
+      tagName: "a",
       props: {
         href: href,
         name: name,
@@ -24,13 +24,13 @@ export default class Link extends Component<LinkProps> {
   }
 
   render() {
-    window.addEventListener('popstate', () => {
-      if (this.el.parentElement && this.el.parentElement.tagName === 'LI') {
+    window.addEventListener("popstate", () => {
+      if (this.el.parentElement && this.el.parentElement.tagName === "LI") {
         this.giveActive();
       }
     });
 
-    if (typeof this.props.inner === 'string') {
+    if (typeof this.props.inner === "string") {
       this.el.innerText = this.props.inner;
       return;
     }
@@ -43,7 +43,7 @@ export default class Link extends Component<LinkProps> {
 
   private giveActive() {
     location.hash === this.props.href
-      ? this.el.classList.add('active')
-      : this.el.classList.remove('active');
+      ? this.el.classList.add("active")
+      : this.el.classList.remove("active");
   }
 }

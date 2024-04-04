@@ -1,6 +1,6 @@
 import { Component } from "../../core/core";
 import { OptionValue } from "../../constants/digimart";
-import './Input.scss';
+import "./Input.scss";
 
 const elementInputSelectArray = ["input", "select"] as const;
 
@@ -47,7 +47,7 @@ export default class Input extends Component<InputProps> {
 
     if (this.el instanceof HTMLSelectElement && this.props.array) {
       this.props.array.forEach(option => {
-        const newOption = document.createElement('option');
+        const newOption = document.createElement("option");
         if (option.ID) newOption.value = option.ID.toString();
         newOption.innerText = option.TEXT;
         this.el.append(newOption);
